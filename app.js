@@ -3,6 +3,7 @@ const mongoose=require('mongoose');
 const bodyParser =require('body-parser');
 const categories=require('./routes/categories');
 const app=express();
+require('dotenv').config();
 const mongourl=process.env.database;
 //work as a middleware
 app.use(bodyParser.json());

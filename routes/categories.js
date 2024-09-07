@@ -39,6 +39,28 @@ router.get('/getall',async(req,res)=>{
         res.status(500).json({message:"server error", error:err.message})
     }
 });
+router.delete('/delete',async(req,res)=>{
+    try{
+        const result=await Category.deleteMany({});
+        res.status(200).json(result);
 
+
+    }catch(err){
+        res.status(500).json({message:"server error", error:err.message})
+    }
+});
+router.get('/getOne/:id',async(req,res)=>{
+    const {id}=req.params;
+    try{
+        const getting=await Category.findById(id);
+        if(!getting){
+            return res.status(404).json({message:"Category not found!!"});
+        }
+        res.status(200).json(getting);
+
+    }catch(err){
+        res.status(500).json({message:"server error", error:err.message})
+    }
+});
 
 module.exports=router;
