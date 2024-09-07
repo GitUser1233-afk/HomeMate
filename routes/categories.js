@@ -62,5 +62,21 @@ router.get('/getOne/:id',async(req,res)=>{
         res.status(500).json({message:"server error", error:err.message})
     }
 });
+router.delete('/deleteOne/:id',async(req,res)=>{
+    const {id}=req.params;
+    try{
+        const match=await Category.findByIdAndDelete(id);
+        if(!match){
+            return res.status(404).json({message:"Category not found!!"});
+        }
+        res.status(200).json({
+            message:"Category Deleted Successfully!!!",
+            data: match
+        });
+
+    }catch(err){
+        res.status(500).json({message:"server error", error:err.message})
+    }
+});
 
 module.exports=router;
