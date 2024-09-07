@@ -10,8 +10,7 @@ app.use(bodyParser.json());
 mongoose.connect('mongodb+srv://Anshika_3012:Anshika%403012@cluster0.rrcc1.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0',
     {
         //useNewurlParser:true,
-        // useUnifiledTopology:true,
-        // useCreateIndex:true
+      
     }
 )
 .then(()=>console.log('mongoDb contted'))
